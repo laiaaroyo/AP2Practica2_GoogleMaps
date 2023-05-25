@@ -97,8 +97,8 @@ Aquest codi representa representa una aplicació de cartellera de pel·lícules.
 - `cercar_cartellera`: Demana a l'usuari que seleccioni una opció de cerca i crida als mètodes de cerca corresponents en funció de la selecció.
 - `cercar_cartellera_per_nom`: Cerca pel·lícules per títol i mostra els resultats.
 - `cercar_cartellera_per_genere`: Cerca pel·lícules per gènere i mostra els resultats.
-- `cercar_cartellera_per_directors`: Cerca pel·lícules per pel·lícules per director i mostra els resultats.
-- `cercar_cartellera_per_actors`: Cerca pel·lícules per pel·lícules per actor i mostra els resultats.
+- `cercar_cartellera_per_directors`: Cerca pel·lícules per director i mostra els resultats.
+- `cercar_cartellera_per_actors`: Cerca pel·lícules per actor i mostra els resultats.
 
 ### Crear i ensenyar els grafs
 - `crear_graf_busos`: Crea el graf de busos.
@@ -112,23 +112,14 @@ Aquest codi representa representa una aplicació de cartellera de pel·lícules.
 ## Ús
 Assegurar-te de tenir totes les llibreries i paquets instal·lats i seguir les opcions de menú que es mostren per interactuar amb l'aplicació.
 
-## Important Note
-Please note that some parts of the code are incomplete or missing. For example, the methods `crear_graf_busos`, `mostrar_graf_busos`, `crear_graf_ciutat`, and `mostrar_graf_ciutat` are defined but not implemented. Additionally, the main function and its call are commented out. You may need to complete or modify the code according to your specific requirements.
 
-Feel free to make the necessary adjustments and improvements to suit your needs.
 
 ## Autores
 
-* Clàudia Ibañez i Laia Royo
+* Clàudia Ibañez
+*  Laia Royo
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
 
