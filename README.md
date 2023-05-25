@@ -82,7 +82,7 @@ Aquest codi representa representa una aplicació de cartellera de pel·lícules.
 - Python 3.x
 - Paquets necessaris: `time`, `geocoder`, `requests`, `billboard`
 
-## Functionalitat
+## Funcionalitat
 
 ### Class `Demo`
 - La classe `Demo` representa la principal funcionalitat de l'aplicació de la cartellera.
