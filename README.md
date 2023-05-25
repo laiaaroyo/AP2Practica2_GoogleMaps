@@ -1,6 +1,6 @@
 # Cinebus!
 
-El projecte gira al voltant d'una cartellera de la ciutat de Barcelona, que mostra una gran varietat de pel·lícules amb els seus corresponents cinemes de la ciutat. Tria una pel·lícula, i et mostrem un mapa interactiu que t'indicarà el recorregut de la primera pel·lícula que es projectarà. T'ensenyem com arribar-hi amb bus i a peu!
+El projecte gira al voltant d'una cartellera de la ciutat de Barcelona, que mostra una gran varietat de pel·lícules i tota la informació relativa a la projecció d'aquella pel·lícula. Tria una pel·lícula, i et mostrem un mapa interactiu que t'indicarà el recorregut de la primera pel·lícula que es projectarà. T'ensenyem com arribar-hi amb bus i a peu!
 
 ## Índex
 1. Billboard
