@@ -39,7 +39,7 @@ El codi es divideix en vàries seccions: classes de dades i llegir la informaci�
    - `time`: Tupla que conté l'hora d'inici de la projecció en format (hora,minut).
 
 4. `Billboard`: Aquesta classe representa una cartellera de cine i conté els següents camps.
-   - `films`: Llista d'objectes de la classe 'Film', que representa les pel·lícules disponibles a la cartellera.
+   - `films`: Llista d'objectes de la classe `Film`, que representa les pel·lícules disponibles a la cartellera.
    - `cinemas`: Llista d'objectes de la classe `Cinema`, que representen els cines disponibles a la cartellera.
    - `projections`: Llista d'objectes de la classe `Projection`, que representen les projeccions de pel·lícules en els cinemes.
 
