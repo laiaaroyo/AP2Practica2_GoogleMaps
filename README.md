@@ -1,13 +1,13 @@
-# Project Title
+# Cinebus!
 
-One Paragraph of project description goes here
+El projecte gira al voltant d'una cartellera de la ciutat de Barcelona, que mostra una gran varietat de pel·lícules amb els seus corresponents cinemes de la ciutat. Tria una pel·lícula, i et mostrem un mapa interactiu que t'indicarà el recorregut de la primera pel·lícula que es projecta en el dia actual. T'ensenyem com arribar-hi amb bus i a peu!
 
 ## Índex
 1. Billboard
 2. Buses
 3. City
 4. Demo
-5. Bibliografia i llibreries
+
 
 # 1. Billboard
 Conjunt de classes i funcions per llegir informació de la cartellera de Barcelona desde la pàgina web "https://www.sensacine.com".
@@ -75,49 +75,10 @@ projections_by_actor = billboard.cerca_peli_per_actor("Tom Hanks")
 El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir la informació de la cartellera. Per tant és possible que es produeixin errors de connexió durant l'execució. En cas d'error, el codi tornarà a intenta a demanar la sol·licitud després de 5 segons d'espera.
 
 
-## Descripció del projecte
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Autores
 
-### Prerequisits
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Funcionalitats
-
-
-## Executar els tests
-
-Explain how to run the automated tests for this system
-
-
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* Clàudia Ibañez i Laia Royo
 
 ## License
 
