@@ -33,7 +33,7 @@ El codi es divideix en vàries seccions: classes de dades i llegir la informaci�
    - `name`: Nom del cinema.
    - `address`: Dirección del cinema.
 
-3. `Projection`: Aquesta classe representa una projecció d'una pel·lícula en un cinema i contiene els següents camps:
+3. `Projection`: Aquesta classe representa una projecció d'una pel·lícula en un cinema i conté els següents camps:
    - `film`: Objecte de la classe `Film`que representa la pel·lícula projectada.
    - `cinema`: Objete de la classe `Cinema` que representa el cinema on es projecta la pel·lícula.
    - `time`: Tupla que conté l'hora d'inici de la projecció en format (hora,minut).
@@ -74,7 +74,48 @@ projections_by_actor = billboard.cerca_peli_per_actor("Tom Hanks")
 
 El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir la informació de la cartellera. Per tant és possible que es produeixin errors de connexió durant l'execució. En cas d'error, el codi tornarà a intenta a demanar la sol·licitud després de 5 segons d'espera.
 
+# Demo
 
+Aquest codi representa representa una aplicació de cartellera de pel·lícules. El codi permet als usuaris crear i gestionar una cartellera de pel·lícules, cercar pel·lícules i trobar rutes per arribar a les sales de cinema. 
+
+## Prerequisits
+- Python 3.x
+- Paquets necessaris: `time`, `geocoder`, `requests`, `billboard`
+
+## Functionalitat
+
+### Class `Demo`
+- La classe `Demo` representa la principal funcionalitat de l'aplicació de la cartellera.
+- Contè mètodes per gestionar la cartellera de pel·lícules, cercar pel·lícules i crear grafs per als autobusos i la ciutat i mostrar menús.
+- El mètode `executar` és el punt principal del programa i executa el bucle del menú principal.
+
+### Gestionar la cartellera
+- `crear_cartellera`: Crea una cartellera tot cridant la funció `read` del modul `billboard`.
+- `mostrar_cartellera`: Ensenya el contingut de la cartellera, mostrant els títols de les pel·lícules, gèneres, directors i actors.
+
+### Buscar a la cartellera de pel·lícules 
+- `cercar_cartellera`: Demana a l'usuari que seleccioni una opció de cerca i crida als mètodes de cerca corresponents en funció de la selecció.
+- `cercar_cartellera_per_nom`: Cerca pel·lícules per títol i mostra els resultats.
+- `cercar_cartellera_per_genere`: Cerca pel·lícules per gènere i mostra els resultats.
+- `cercar_cartellera_per_directors`: Cerca pel·lícules per pel·lícules per director i mostra els resultats.
+- `cercar_cartellera_per_actors`: Cerca pel·lícules per pel·lícules per actor i mostra els resultats.
+
+### Crear i ensenyar els grafs
+- `crear_graf_busos`: Crea el graf de busos.
+- `mostrar_graf_busos`: Ensenya el graf de busos.
+- `crear_graf_ciutat`: Crea el graf de la ciutat.
+- `mostrar_graf_ciutat`: Ensenya el graf de la ciutat.
+
+### Buscar la ruta fins al cinema
+- `mostrar_camí_pel·lícula`: Demana a l'usuari que introdueixi la ubicació i l'hora actuals i, a continuació, troba la ruta a la pel·lícula desitjada en funció de l'horari de la pel·lícula.
+
+## Ús
+Assegurar-te de tenir totes les llibreries i paquets instal·lats i seguir les opcions de menú que es mostren per interactuar amb l'aplicació.
+
+## Important Note
+Please note that some parts of the code are incomplete or missing. For example, the methods `crear_graf_busos`, `mostrar_graf_busos`, `crear_graf_ciutat`, and `mostrar_graf_ciutat` are defined but not implemented. Additionally, the main function and its call are commented out. You may need to complete or modify the code according to your specific requirements.
+
+Feel free to make the necessary adjustments and improvements to suit your needs.
 
 ## Autores
 
