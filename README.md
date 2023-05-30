@@ -74,6 +74,45 @@ projections_by_actor = billboard.cerca_peli_per_actor("Tom Hanks")
 
 El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir la informació de la cartellera. Per tant és possible que es produeixin errors de connexió durant l'execució. En cas d'error, el codi tornarà a intenta a demanar la sol·licitud després de 5 segons d'espera.
 
+# Buses
+
+## Prerequisits
+- Networkx
+- Matplotlib.pyplot
+- Staticmap
+- json
+- numpy
+- pandas
+- request
+
+## Funcionalitat
+L'estructura del codi es divideix en: classes de dades,i en llegir les dades per a partir de les dades crear el graf dels busos.
+
+### Classe `Parada`
+
+Aquesta classe representa una parada i conté els camps següents:
+- `nom`: és un string i representa el nom de la parada
+- `linies`: és una llista que engloba totes les línies de busos que hi ha.
+- `pos`: 
+
+### Classe `Bus`
+
+
+
+### Funcions
+
+`distance` : retorna la distància entre dos posicions.
+`get_buses_graph()`: extreu les dades amb la informació sobre els nodes i l'aresta, i retorna el graf buses en format nx.Graph.
+`show`: dibuixa el graf i ens el mostra en una altra finestra.
+`plot`: mostra el mapa de la ciutat de Barcelona amb el graf dels busos dibuixat a sobre.
+
+
+
+
+### C
+
+
+
 # Demo
 
 Aquest codi representa representa una aplicació de cartellera de pel·lícules. El codi permet als usuaris crear i gestionar una cartellera de pel·lícules, cercar pel·lícules i trobar rutes per arribar a les sales de cinema. 
