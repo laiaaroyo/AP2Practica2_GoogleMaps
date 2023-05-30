@@ -88,23 +88,23 @@ def show(g: BusesGraph) -> None:
         folium.Marker(p['info'].pos, popup = p['info'].nom, tooltip = p['info'].nom).add_to(mapa)
     '''
 
-def plot(g: BusesGraph, nom_fitxer: str) -> None:
-    """Desa el graf com una imatge amb el mapa de la ciutat en l'arxiu especificat."""
-    'no funciona'
-    mapa = (800, 800)
-    bbox = g.get_bounding_box() #Area definida amb coordenades
-    mapa.add_image(staticmaps.BoundingBox(*bbox), zoom=15)
-
+   def plot(g: BusesGraph, nom_fitxer: str) -> None:
+    """Desa el graf com una imatge amb el mapa de la ciutat de fons en l'arxiu especificat."""
+    
+    mapa = staticmap.StaticMap(800, 800)
+    
     for node in g.nodes:
-        p = staticmaps.create_latlng(node['info']['pos'][0], node['info']['pos'][1])
-        mapa.add_markers(staticmaps.CircleMarker(p, 'red', 5))
+        p = (node['info']['pos'][0], node['info']['pos'][1])
+        mapa.add_marker(staticmap.CircleMarker(p, 'red', 5))
 
     for edge in g.edges:
-        s = staticmaps.create_latlng(edge.source['info']['pos'][0], edge.source['info']['pos'][1])
-        d = staticmaps.create_latlng(edge.target['info']['pos'][0], edge.target['info']['pos'][1])
-        mapa.add_line(staticmaps.Line([s, d], 'blue', 1))
+        s = (edge.source['info']['pos'][0], edge.source['info']['pos'][1])
+        d = (edge.target['info']['pos'][0], edge.target['info']['pos'][1])
+        mapa.add_line(staticmap.Line([s, d], 'blue', 1))
 
-    mapa.save(nom_fitxer)
+    #Guardem la imatge en un fitxer
+    imatge = mapa.render()
+    imatge.save(nom_fitxer)
 '''
 def main():
     graf = get_buses_graph()
