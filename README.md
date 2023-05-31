@@ -31,7 +31,7 @@ El codi es divideix en vàries seccions: classes de dades i llegir la informaci�
 
 2. `Cinema`: Aquesta classe representa un cinema i conté els següents camps.
    - `name`: Nom del cinema.
-   - `address`: Dirección del cinema.
+   - `address`: Direcció del cinema.
 
 3. `Projection`: Aquesta classe representa una projecció d'una pel·lícula en un cinema i conté els següents camps:
    - `film`: Objecte de la classe `Film`que representa la pel·lícula projectada.
@@ -75,7 +75,7 @@ projections_by_actor = billboard.cerca_peli_per_actor("Tom Hanks")
 El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir la informació de la cartellera. Per tant és possible que es produeixin errors de connexió durant l'execució. En cas d'error, el codi tornarà a intenta a demanar la sol·licitud després de 5 segons d'espera.
 
 # Buses
-
+Aquest programa utilitza les dades de l'Àrea Metropolitana de Barceñpma èr crear un graf representant les parades del bus i les seves connexions. Permet als usuaris calcular la duració del trajecte entre diferents parades i visualitzar les connexions dels busos en un mapa.
 ## Prerequisits
 - Networkx
 - Matplotlib.pyplot
@@ -87,13 +87,16 @@ El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir 
 
 ## Funcionalitat
 L'estructura del codi es divideix en: classes de dades,i en llegir les dades per a partir de les dades crear el graf dels busos.
-
+### Classe BusesGraph
+Àlies per un graf Networkx que representa la xarxa de busos.
+### Classe Coord
+Àlies per una tupla de dos valors que representen les coordenades (latitud i longitud).
 ### Classe `Parada`
 
 Aquesta classe representa una parada i conté els camps següents:
 - `nom`: és un string i representa el nom de la parada
 - `linies`: és una llista que engloba totes les línies de busos que hi ha.
-- `pos`: 
+- `pos`: és una dada de tipus coordenades
 
 ### Classe `Bus`
 
@@ -102,9 +105,19 @@ Aquesta classe representa una parada i conté els camps següents:
 ### Funcions
 
 `distance` : retorna la distància entre dos posicions.
-`get_buses_graph()`: extreu les dades amb la informació sobre els nodes i l'aresta, i retorna el graf buses en format nx.Graph.
-`show`: dibuixa el graf i ens el mostra en una altra finestra.
-`plot`: mostra el mapa de la ciutat de Barcelona amb el graf dels busos dibuixat a sobre.
+`get_buses_graph()`: extreu les dades amb la informació sobre els nodes i l'aresta, i retorna la xarxa de busos en format nx.Graph.
+`show`: dibuixa el graf i ens el mostra en una altra finestra mitjançant Matplotlib.
+`plot`: desa una imatge del mapa de la ciutat de Barcelonaamb la xarxa d'autobusos mitjançant StaticMaps.
+
+### Ús del programa
+Per executar el codi, només s'han de cridar a les funcions:
+```python
+buses_graph = get_buses_graph()
+show(buses_graph)
+plot(buses_graph, 'bus_network.png')
+```
+
+S'ha de tenir en compte que el planificador de rutes d'autobús es basa en les dades facilitades per l'AMB (Àrea Metropolitana de Barcelona).
 
 
 
