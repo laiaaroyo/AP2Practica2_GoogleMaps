@@ -75,7 +75,7 @@ projections_by_actor = billboard.cerca_peli_per_actor("Tom Hanks")
 El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir la informació de la cartellera. Per tant és possible que es produeixin errors de connexió durant l'execució. En cas d'error, el codi tornarà a intenta a demanar la sol·licitud després de 5 segons d'espera.
 
 # Buses
-Aquest programa utilitza les dades de l'Àrea Metropolitana de Barceñpma èr crear un graf representant les parades del bus i les seves connexions. Permet als usuaris calcular la duració del trajecte entre diferents parades i visualitzar les connexions dels busos en un mapa.
+Aquest programa utilitza les dades de l'Àrea Metropolitana de Barcelona per crear un graf representant les parades del bus i les seves connexions. Permet als usuaris calcular la duració del trajecte entre diferents parades i visualitzar les connexions dels busos en un mapa.
 ## Prerequisits
 - Networkx
 - Matplotlib.pyplot
