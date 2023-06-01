@@ -94,23 +94,32 @@ L'estructura del codi es divideix en: classes de dades,i en llegir les dades per
 ### Classe `Parada`
 
 Aquesta classe representa una parada i conté els camps següents:
-- `nom`: és un string i representa el nom de la parada
-- `linies`: és una llista que engloba totes les línies de busos que hi ha.
-- `pos`: és una dada de tipus coordenades
+- `nom`: el nom de la parada d'autobús.
+- `linies`: una llista de línies de busos que passen per la parada d'autobús.
+- `pos`: les coordenades de la parada d'autobús (latitud i longitud).
+
+També proveeix mètodes per afegir línies de bus a la parada.
 
 ### Classe `Bus`
 
+Aquesta classe representa totes les característiques de l'autobús i conté els camps següents:
+- `v_by_bus`: la velocitat de l'autobús en quilòmetres per hora, que en aquest cas hem suposat, que va a 15 km/h.
+- `dist`: la distància entre parada i parada.
+- `t_espera`: el temps d'espera a les parades abans de que arribi l'autobús, suposem que és 0.
+- `duration`: la duració del trajecte d'autobús.
+
+També proveeix mètodes per calcular la duració del trajecte de bus.
 
 
 ### Funcions
 
-`distance` : retorna la distància entre dos posicions.
-`get_buses_graph()`: extreu les dades amb la informació sobre els nodes i l'aresta, i retorna la xarxa de busos en format nx.Graph.
-`show`: dibuixa el graf i ens el mostra en una altra finestra mitjançant Matplotlib.
-`plot`: desa una imatge del mapa de la ciutat de Barcelonaamb la xarxa d'autobusos mitjançant StaticMaps.
+`distance` : retorna la distància entre dos coordenades, utilitzant la fórmula de la distància euclidiana.
+`get_buses_graph()`: extreu les dades del bus amb la informació sobre els nodes i l'aresta, i retorna la xarxa de busos utilitzant Networkx.
+`show`: dibuixa el graf i ens el mostra en una altra finestra mitjançant Matplotlib, mostrant-nos les parades de bus com a nodes, i les connexions com a arestes.
+`plot`: desa una imatge del mapa de la ciutat de Barcelona amb amb la xarxa d'autobusos mitjançant StaticMaps.
 
 ### Ús del programa
-Per executar el codi, només s'han de cridar a les funcions:
+Per executar el codi, només s'han de cridar a les funcions (prèviament ja hem hagut d'instalar totes les llibreries necessàries):
 ```python
 buses_graph = get_buses_graph()
 show(buses_graph)
