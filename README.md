@@ -86,37 +86,18 @@ Aquest programa utilitza les dades de l'Àrea Metropolitana de Barcelona per cre
 - request
 
 ## Funcionalitat
-L'estructura del codi es divideix en: classes de dades,i en llegir les dades per a partir de les dades crear el graf dels busos.
+L'estructura del codi es divideix en: llegir les dades per a partir de la pàgina web d'AMB i crear el graf dels busos a partir d'aquelles que més ens interessen. I també en crear funcions que ens mostrin el resultat.
 ### Classe BusesGraph
-Àlies per un graf Networkx que representa la xarxa de busos.
+Àlies per un graf Networkx que representa la xarxa de busos. I on els nodes representen les Parades i les arestes els trajectes entre parades que fan els busos.
 ### Classe Coord
 Àlies per una tupla de dos valors que representen les coordenades (latitud i longitud).
-### Classe `Parada`
-
-Aquesta classe representa una parada i conté els camps següents:
-- `nom`: el nom de la parada d'autobús.
-- `linies`: una llista de línies de busos que passen per la parada d'autobús.
-- `pos`: les coordenades de la parada d'autobús (latitud i longitud).
-
-També proveeix mètodes per afegir línies de bus a la parada.
-
-### Classe `Bus`
-
-Aquesta classe representa totes les característiques de l'autobús i conté els camps següents:
-- `v_by_bus`: la velocitat de l'autobús en quilòmetres per hora, que en aquest cas hem suposat, que va a 15 km/h.
-- `dist`: la distància entre parada i parada.
-- `t_espera`: el temps d'espera a les parades abans de que arribi l'autobús, suposem que és 0.
-- `duration`: la duració del trajecte d'autobús.
-
-També proveeix mètodes per calcular la duració del trajecte de bus.
-
 
 ### Funcions
 
-- `distance` : retorna la distància entre dos coordenades, utilitzant la fórmula de la distància euclidiana.
-- `get_buses_graph()`: extreu les dades del bus amb la informació sobre els nodes i l'aresta, i retorna la xarxa de busos utilitzant Networkx.
-- `show`: dibuixa el graf i ens el mostra en una altra finestra mitjançant Matplotlib, mostrant-nos les parades de bus com a nodes, i les connexions com a arestes.
-- `plot`: desa una imatge del mapa de la ciutat de Barcelona amb amb la xarxa d'autobusos mitjançant StaticMaps.
+- `distance()` : retorna la distància entre dos coordenades, utilitzant la fórmula de Haversine.
+- `get_buses_graph()`: extreu les dades del bus amb la informació sobre els nodes i l'aresta, i retorna el graf que representa la xarxa de busos utilitzant Networkx.
+- `show()`: dibuixa el graf i ens el mostra en una altra finestra mitjançant Matplotlib, mostrant-nos les parades de bus com a nodes, i les conexions com a arestes.
+- `plot()`: desa com a fitxer amb el nom indicat una imatge del mapa de la ciutat de Barcelona amb la xarxa d'autobusos (és a dir el graf) en les coordenades corresponenets mitjançant StaticMaps.
 
 ### Ús del programa
 Per executar el codi, només s'han de cridar a les funcions (prèviament ja hem hagut d'instalar totes les llibreries necessàries):
@@ -131,7 +112,7 @@ S'ha de tenir en compte que el planificador de rutes d'autobús es basa en les d
 
 
 
-### C
+# City
 
 
 
