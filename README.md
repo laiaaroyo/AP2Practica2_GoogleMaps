@@ -113,10 +113,10 @@ També proveeix mètodes per calcular la duració del trajecte de bus.
 
 ### Funcions
 
-`distance` : retorna la distància entre dos coordenades, utilitzant la fórmula de la distància euclidiana.
-`get_buses_graph()`: extreu les dades del bus amb la informació sobre els nodes i l'aresta, i retorna la xarxa de busos utilitzant Networkx.
-`show`: dibuixa el graf i ens el mostra en una altra finestra mitjançant Matplotlib, mostrant-nos les parades de bus com a nodes, i les connexions com a arestes.
-`plot`: desa una imatge del mapa de la ciutat de Barcelona amb amb la xarxa d'autobusos mitjançant StaticMaps.
+- `distance` : retorna la distància entre dos coordenades, utilitzant la fórmula de la distància euclidiana.
+- `get_buses_graph()`: extreu les dades del bus amb la informació sobre els nodes i l'aresta, i retorna la xarxa de busos utilitzant Networkx.
+- `show`: dibuixa el graf i ens el mostra en una altra finestra mitjançant Matplotlib, mostrant-nos les parades de bus com a nodes, i les connexions com a arestes.
+- `plot`: desa una imatge del mapa de la ciutat de Barcelona amb amb la xarxa d'autobusos mitjançant StaticMaps.
 
 ### Ús del programa
 Per executar el codi, només s'han de cridar a les funcions (prèviament ja hem hagut d'instalar totes les llibreries necessàries):
