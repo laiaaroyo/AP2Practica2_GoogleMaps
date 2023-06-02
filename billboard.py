@@ -77,8 +77,8 @@ def read() -> Billboard:
                 break
             
             except RequestException:
-                print("Hi ha hagut un error:", str(RequestException))
-                print("Tornant a intentar en 5 segons...")
+                print('Hi ha hagut un error:', str(RequestException))
+                print('Tornant a intentar en 5 segons...')
                 time.sleep(5)  # Esperem 5 segons abans de tornar a provar la petició.
 
         if response:
@@ -107,7 +107,7 @@ def read_list_cinemas(contingut:BeautifulSoup, cinemes:dict[str,str] ) -> dict[s
     adresses = contingut.select('span.lighten:not(.fr.fs11.lighten)')
     idx = 0
     for direccio in adresses:
-        cinemes[sales_cinema[idx]] = direccio.text.strip("\n")
+        cinemes[sales_cinema[idx]] = direccio.text.strip('\n')
         idx +=1
 
     return cinemes
@@ -180,7 +180,7 @@ def read_list_projections(contingut: BeautifulSoup,cinemes:dict[str,str],films:d
                     data_times = em_tag['data-times']
                     data_times = json.loads(data_times)
                     hora_inici = data_times[0]
-                    hora, minuts = hora_inici.split(":")
+                    hora, minuts = hora_inici.split(':')
                     time = (int(hora), int(minuts))
    
                     projections.append(Projection(pelicula_actual,cinema_actual,time))
