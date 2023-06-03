@@ -201,7 +201,7 @@ class Demo: # sistema de menús per cercar pel·lícules i indicar el camí per 
         if self.graf_busos is None:
             self.crear_graf_busos()
         g2 = self.graf_busos()
-        print("El graf de busos s'ha creat correctament!")
+        
        
         self.graf_city = build_city_graph(g1, g2)
         print("El graf de la ciutat s'ha creat amb èxit!")
