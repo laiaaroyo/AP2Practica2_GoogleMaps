@@ -306,7 +306,7 @@ class Demo: # sistema de menús per cercar pel·lícules i indicar el camí per 
         print("----- Mòdul Demo -----")
         print("1. Mostrar autors")
         print("2. Mostrar cartellera")
-        print("3. Cercar a la cartellera")
+        print("3. Cercar a la cartellera i mostrar camí")
         print("4. Mostrar graf de busos")
         print("5. Mostrar graf de ciutat")
         print("0. Sortir")
