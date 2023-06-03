@@ -118,27 +118,27 @@ Aquest mòdul implementa un sistema de navegació de la ciutat mitjançant xarxe
 ## Prerequisits
 Paquets necessaris: `networkx`, `osmnx`, `pickle`, `os`, `buses`.
 
-## Ús 
-### Classe 
+## Funcionalitat
 
 ##### get_osmx_graph()
-Retorna un graf de la ciutat de Barcelona amb distàncies utilitzant la llibreria OSMnx.
+Retorna un graf de la ciutat de Barcelona amb distàncies utilitzant la llibreria OSMnx. Especifica la ubicació (Barcelona,Espanya) i el tipus de xarxa (totes).
 
 ##### save_osmnx_graph(filename:str) -> OsmnxGraph
-Retorna el graf guardat al fitxer filename. LLegeix les dades del graf amb el mòdul pickle i retorna el graf.
+Retorna el graf guardat al fitxer filename. LLegeix les dades del graf amb el mòdul pickle i retorna el graf carregat.
 
 ##### cruilla_mes_propera(g: OsmnxGraph, edge: int) -> int | None
 Donada una aresta (representada pel seu identificador), retorna el node veí més proper de tipus 'cruïlla'. Itera sobre els nodes adjacents de l'aresta i comprova el seu tipus per trobar el node cruilla més proper. Si no es troba cap node retorna None.
+
 ##### build_city_graph(g1: OsmnxGraph, g2: BusesGraph) -> CityGraph
-Retorna el graf resultant de la unió de g1 i g2. Crea un graf de la ciutat combinat el graf OSMnx i el graf de busos. Per cada node 'parada' es crea una aresta per connectar-lo amb el node 'cruilla' més proper.
+Retorna un graf de la ciutat combinat el graf OSMnx i el graf de busos. Crea un `CityGraph`buit i afegeix nodes i arestes a partir de les dades de g1 i g2. Els nodes de g1 s'afegeixen com a nodes "cruïlla" i les arestes de g1 s'afegeixen com a arestes de "carrer". A més, per cada node 'parada' es crea una aresta per connectar-lo amb el node 'cruilla' més proper. Finalment calcula les distàncies del camí més curt entre els nodes cruilla i els nodes parada mitjançant la funció `ox.shortest_path()`.
 
 ##### plot(g: CityGraph, filename: str) -> None
-Desa g com una imatge amb el mapa de la cuitat de fons en l'arxiu filename.
+Desa g com una imatge amb el mapa de la cuitat de fons en l'arxiu filename utilitzant la biblioteca `staticmap`
 
 ##### find_path (ox_g: OsmnxGraph, g: CityGraph, src: Coord, dst: Coord) -> tuple[Path, int]
 
 Troba el camí més curt entre dues coordenades 'src' i 'dst' del graf de la ciutat g. La funció retorna una tupla que conté el camí com una llista de coordenades i el temps total necessari per recórrer el camí.
-Trobem la parada d'inici més a prop i la parada de destinació més a prop.
+Troba la parada d'inici més a prop i la parada de destinació més a prop i calcula el camí més curt del graf entre aquests dos punts.
 
 ##### show(g: CityGraph) -> None
 Mostra g de forma interactiva en una finestra.
@@ -148,6 +148,12 @@ Donat el graf de la ciutat 'g', i un camí 'p' (llista de coordenades) i el nom 
 
 ##### plot_interactive(filename: str) -> None
 Mostra la imatge especificada per el nom del fitxer en una finestra interactiva.
+
+## Personalització
+- Ciutat: el projecte està configurat per utilitzar Barcelona com a ciutat. Podeu especificar la ciutat desitjada.
+- Velocitats: la velocitat caminant (`V_CAMINANT`) i la velocitat de l'autobús (`V_DEL_BUS`) es poden ajustar segons el que creieu.
+
+## Ús
 
 # Demo
 
