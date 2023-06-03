@@ -246,13 +246,22 @@ class Demo: # sistema de menús per cercar pel·lícules i indicar el camí per 
        
 
         lloc = input("Introdueix el lloc actual: ")
+        # Convertim la direcció actual a coordenades
         
-        temps_a_arribar = 0
-        hora_actual = datetime.datetime.now().time()
+        if "Calle" or "Carrer" in lloc:
+            lloc = direccio.replace("Calle", "")
+            lloc = direccio.replace("Carrer", "")
         
+        # Convertim l'adreça a coordenades
+        origen = self.obtenir_coordenades(lloc)
+        
+        
+        #Mirem quina és la projecció que fan abans i que ens permet arribar abans de que comenci.
         idx = 0
-        
+        hora_actual = datetime.datetime.now().time()
+        temps_a_arribar = 0
         hora_que_arribem = self.sumar_hores(hora_actual,temps_a_arribar)
+        
         # Passem a minuts l'hora en què comença la pel·lícula.
         hora_projeccio = projeccions[idx].time[0] * 60 + projeccions[idx].time[1]
         
@@ -262,15 +271,13 @@ class Demo: # sistema de menús per cercar pel·lícules i indicar el camí per 
             hora_projeccio = projeccions[idx].time[0] * 60 + projeccions[idx].time[1]
         
         
-    
-        direccio = projeccions[idx].cinema.address
+        direccio_cinema = projeccions[idx].cinema.address
         if "Calle" in direccio:
             direccio = direccio.replace("Calle", "")
         
         # Convertim l'adreça a coordenades
-        resultat = self.obtenir_coordenades(direccio)
-        if resultat is not None:
-            latitud,longitud = resultat
+        desti = self.obtenir_coordenades(direccio)
+        
         
         if hora_projeccio - hora_que_arribem <= 5:
             print("Alerta! Afanya't o sino no et donarà temps a comprar palomitas!")
