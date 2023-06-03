@@ -195,19 +195,26 @@ class Demo: # sistema de menús per cercar pel·lícules i indicar el camí per 
 
     def crear_graf_ciutat(self) -> None:
         """Crea el graf de la ciutat."""
-        #self.graf_city = 
+        g1 = get_osmx_graph()
+        print("El graf de l'OpenStreetMaps s'ha creat correctament!")
+        
+        if self.graf_busos is None:
+            self.crear_graf_busos()
+        g2 = self.graf_busos()
+        print("El graf de busos s'ha creat correctament!")
+       
+        self.graf_city = build_city_graph(g1, g2)
         print("El graf de la ciutat s'ha creat amb èxit!")
+        show(self.graf_city)
 
     def mostrar_graf_ciutat(self) -> None:
         # Codi per mostrar el graf de la ciutat
         print("----- Graf de la Ciutat -----")
-
+        
         if self.graf_city is None:
-            if self.graf_busos is None:
-                self.crear_graf_busos()
-            build_city_graph(self.graf_busos)
+            self.crear_graf_ciutat()
 
-        plot_interactive('graf_city.jpg')
+        plot(self.graf_city, 'finalcity.jpg')
 
 
         print("-----------------------------")
