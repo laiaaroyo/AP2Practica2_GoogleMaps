@@ -155,6 +155,15 @@ Mostra la imatge especificada per el nom del fitxer en una finestra interactiva.
 
 ## Ús
 
+```python
+    graf1= get_osmx_graph()
+    graf2= get_buses_graph()
+    
+    g_ciutat = build_city_graph(graf1, graf2)
+    
+    plot(g_ciutat, 'finalcity.jpg')
+    
+```
 # Demo
 
 Aquest codi representa representa una aplicació de cartellera de pel·lícules. El codi permet als usuaris crear i gestionar una cartellera de pel·lícules, cercar pel·lícules i trobar rutes per arribar a les sales de cinema. 
@@ -192,7 +201,6 @@ Aquest codi representa representa una aplicació de cartellera de pel·lícules.
 
 ## Ús
 Assegurar-te de tenir totes les llibreries i paquets instal·lats i seguir les opcions de menú que es mostren per interactuar amb l'aplicació.
-
 
 
 ## Autores
