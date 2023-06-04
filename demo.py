@@ -6,7 +6,7 @@ from city import *
 import datetime
 
 
-class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per arribar-hi.
+class Demo:  # Sistema de menús per cercar pel·lícules i indicar el camí per arribar-hi.
 
     def __init__(self):
         self.billboard = None
@@ -16,7 +16,6 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
         self.graf_city = None
         self.plot_graf_city = None
 
-
     def mostrar_autors(self) -> None:
         """Funció que imprimeix els autors del projecte."""
         print('Autors del projecte:')
@@ -25,13 +24,15 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
 
 
     def crear_cartellera(self) -> None:
-        """Mètode per crear la cartellera de Barcelona. Si s'ha creat amb èxit ho imprimim per pantalla"""
+        """Mètode per crear la cartellera de Barcelona.
+          Si s'ha creat amb èxit ho imprimim per pantalla"""
         self.billboard = read()
 
 
     def mostrar_cartellera(self) -> None:
-        """Mètode per mostrar el contingut de la cartellera (nom de la pel·lícula, gènere, director i actors). 
-        Si abans no s'ha creat la cartellera l'hem de crear prèviament"""
+        """Mètode per mostrar el contingut de la cartellera (nom de la pel·lícula, gènere, 
+        director i actors). Si abans no s'ha creat la cartellera 
+        l'hem de crear prèviament"""
         
         if not self.billboard:
             self.crear_cartellera()
@@ -44,18 +45,17 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
             print("Actors:", ", ".join(film.actors))
             print("----------------------")
 
-
     def cercar_cartellera(self) -> list[Projection] | None:
-        """Mètode per cercar a la cartellera a través d'un sistema de menús que et permet
-        triar quina cerca vols fer. Retorna una llista de projeccions, i si la cerca no es troba a la cartellera
-        no retorna res."""
+        """Mètode per cercar a la cartellera a través d'un sistema de 
+        menús que et permet triar quina cerca vols fer. Retorna una llista de projeccions, 
+        i si la cerca no es troba a la cartellera no retorna res."""
 
         if not self.billboard:
             self.crear_cartellera()
     
         print("3.1 Cerca per nom de pel·lícula")
         print("3.2 Cerca per gènere")
-        print("3.3 Cerca per director")            
+        print("3.3 Cerca per director")           
         print("3.4 Cerca per actors")
 
         opcio  = input("Selecciona una opció: ")
@@ -71,7 +71,7 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
         elif opcio == "3.4":
             projeccions = self.cercar_cartellera_per_actors()
 
-        if projeccions:   
+        if projeccions:
             resposta = input("Vols que et mostri el camí? ")
             if resposta.lower() == "si":
                 self.mostrar_camí_pel·lícula(projeccions)
@@ -96,9 +96,9 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
                     print("Títol:", projection.film.title)
                     print("Cinema:", projection.cinema.name)
                     print("Direcció:", projection.cinema.address)
-                    print("Hora:", projection.time[0],":",projection.time[1])
+                    print("Hora:", projection.time[0], ":", projection.time[1])
                     print("----------------------")
-                return sorted(projeccions, key = lambda x: (x.time[0],x.time[1]))
+                return sorted(projeccions, key=lambda x: (x.time[0],x.time[1]))
 
             else:
                 print("No s'ha trobat cap pel·lícula que coincideixi amb la cerca.")
@@ -118,9 +118,9 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
                     print("Títol:", projection.film.title)
                     print("Cinema:", projection.cinema.name)
                     print("Direcció:", projection.cinema.address)
-                    print("Hora:", projection.time[0],":",projection.time[1])
+                    print("Hora:", projection.time[0], ":", projection.time[1])
                     print("----------------------")
-                return sorted(projeccions, key = lambda x: (x.time[0], x.time[1])) 
+                return sorted(projeccions, key=lambda x: (x.time[0], x.time[1])) 
 
             else:
                 print("No s'ha trobat cap pel·lícula")
@@ -139,9 +139,9 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
                     print("Títol:", projection.film.title)
                     print("Cinema:", projection.cinema.name)
                     print("Direcció:", projection.cinema.address)
-                    print("Hora:", projection.time[0],":",projection.time[1])
+                    print("Hora:", projection.time[0], ":", projection.time[1])
                     print("----------------------")
-                return sorted(projeccions, key = lambda x: (x.time[0], x.time[1]))
+                return sorted(projeccions, key=lambda x: (x.time[0], x.time[1]))
             else:
                 print("No s'ha trobat cap pel·lícula")
 
@@ -158,12 +158,11 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
                     print("Títol:", projection.film.title)
                     print("Cinema:", projection.cinema.name)
                     print("Direcció:", projection.cinema.address)
-                    print("Hora:", projection.time[0],":",projection.time[1])
+                    print("Hora:", projection.time[0], ":", projection.time[1])
                     print("----------------------")
-                return sorted(projeccions,key = lambda x: (x.time[0], x.time[1]))
+                return sorted(projeccions,key=lambda x: (x.time[0], x.time[1]))
             else:
                 print("No s'ha trobat cap pel·lícula")
-
 
     def crear_graf_busos(self) -> None:
         """Utilitza el mòdul buses per crear el graf de busos i desar-lo en una imatge en format .jpg. """
@@ -172,7 +171,6 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
         plot(self.graf_busos, 'graf_busos.jpg')
         self.plot_graf_busos = 'graf_busos.jpg'
         print("El graf de busos s'ha creat amb èxit!")
-
 
     def mostrar_graf_busos(self) -> None:
         """Un cop creat el graf de busos (si no està creat el crea abans) mostra una imatge del graf de busos inserit a la ciutat."""
@@ -210,24 +208,35 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
     def obtenir_coordenades(self, direccio:str) -> Coord:
         """Donada una direcció retorna les coordenades de l'adreça, retorna una tupla amb la latitud i la longitud."""
 
-        equivalencia:dict[str,Coord] = {"Gran Vía de les Corts Catalanes, 385, 08015 Barcelona":(41.37644012709498, 2.1494966562395437) , "Calle Aribau, 8, 08011 Barcelona": (41.38627471324918, 2.162503137010816), 
-                        "Rambla de Prat 16, 08012 Barcelona":(41.40185607088032, 2.1516961793420064) , "Paseig de Gracia, 13, 08007 Barcelona": (41.38988140261133, 2.1675482703635613) , 
-                        "Carrer de Girona 173-175,08025 Barcelona":(41.399749089154525, 2.164554737011875), "Calle Verdi, 32, 08012 Barcelona": (41.4042920109033, 2.1568431370122014), 
-                        "Sta Fé de Nou Mèxic s/n, 08017 Barcelona": (41.39448291172901, 2.1362157744928254),"Avenida Diagonal, 3, 08019 Barcelona":(41.40997594323552, 2.2166893860724706) ,
-                        "Passeig Potosí 2 - Centro Comercial La Maquinista, 08030 Barcelona": (41.43973919927414, 2.198296733222233),
-                        "Paseo Andreu Nin s/n - Pintor Alzamora, 08016 Barcelona": (41.43845041407611, 2.179690362608926) , "Avenida Diagonal, 208, 08018 Barcelona":(41.40486771581146, 2.190754121672208),
-                        "General Mitre, 38-44, 08017 Barcelona": (41.394984391831294, 2.1340233235165305) , "Carrer del Pi, 5, 08002 Barcelona":(41.383370318549254, 2.173896494680645), 
-                        "Calle Floridablanca, 135, 08011 Barcelona":(41.38191672257184, 2.162680423515529),
-                        "C/ Sant Antoni Maria Claret, 168, 08041 Barcelona":(41.409156105188565, 2.1718909523526544), "Calle Salvador Espriu, 61, 08005 Barcelona":(41.39095680130664, 2.197943708176163) ,
-                        "Avenida Diagonal, 508, 08006 Barcelona":(41.39552038735651, 2.153793994681538), "Carrer Béjar, 53, 8014 Barcelona":(41.37757162454815, 2.145023116732765),
-                        "Calle Balmes, 422-424, 08022 Barcelona":(41.40739485032398, 2.1385792793423986),
-                        "Passeig de Gracia, 13, 08007 Barcelona":(41.38969030251614, 2.1674442658461084), "Carrer de la concordia, 1, 08917 Badalona":(41.44420081834454, 2.2306335388604244), 
-                        "Pelai,8":(41.38592831063234, 2.1652820658458003)}
+        equivalencia:dict[str,Coord] = {
+            "Gran Vía de les Corts Catalanes, 385, 08015 Barcelona":(41.37644012709498, 2.1494966562395437) , 
+            "Calle Aribau, 8, 08011 Barcelona": (41.38627471324918, 2.162503137010816), 
+            "Rambla de Prat 16, 08012 Barcelona": (41.40185607088032, 2.1516961793420064) , 
+            "Paseig de Gracia, 13, 08007 Barcelona": (41.38988140261133, 2.1675482703635613) , 
+            "Carrer de Girona 173-175,08025 Barcelona": (41.399749089154525, 2.164554737011875), 
+            "Calle Verdi, 32, 08012 Barcelona": (41.4042920109033, 2.1568431370122014), 
+            "Sta Fé de Nou Mèxic s/n, 08017 Barcelona": (41.39448291172901, 2.1362157744928254),
+            "Avenida Diagonal, 3, 08019 Barcelona": (41.40997594323552, 2.2166893860724706),
+            "Passeig Potosí 2 - Centro Comercial La Maquinista, 08030 Barcelona": (41.43973919927414, 2.198296733222233),
+            "Paseo Andreu Nin s/n - Pintor Alzamora, 08016 Barcelona": (41.43845041407611, 2.179690362608926) , 
+            "Avenida Diagonal, 208, 08018 Barcelona": (41.40486771581146, 2.190754121672208),
+            "General Mitre, 38-44, 08017 Barcelona": (41.394984391831294, 2.1340233235165305) , 
+            "Carrer del Pi, 5, 08002 Barcelona": (41.383370318549254, 2.173896494680645), 
+            "Calle Floridablanca, 135, 08011 Barcelona": (41.38191672257184, 2.162680423515529),
+            "C/ Sant Antoni Maria Claret, 168, 08041 Barcelona": (41.409156105188565, 2.1718909523526544), 
+            "Calle Salvador Espriu, 61, 08005 Barcelona": (41.39095680130664, 2.197943708176163) ,
+            "Avenida Diagonal, 508, 08006 Barcelona": (41.39552038735651, 2.153793994681538),
+            "Carrer Béjar, 53, 8014 Barcelona": (41.37757162454815, 2.145023116732765),
+            "Calle Balmes, 422-424, 08022 Barcelona": (41.40739485032398, 2.1385792793423986),
+            "Passeig de Gracia, 13, 08007 Barcelona": (41.38969030251614, 2.1674442658461084), 
+            "Carrer de la concordia, 1, 08917 Badalona": (41.44420081834454, 2.2306335388604244), 
+            "Pelai,8":(41.38592831063234, 2.1652820658458003)
+        }
         
         return equivalencia[direccio]
 
 
-    def mostrar_camí_pel·lícula(self, projeccions: list[Projection]) :
+    def mostrar_camí_pel·lícula(self, projeccions: list[Projection]):
     
         # Recollim les dades actuals
         print('Introdueix les coordenades en les que et trobes: ')
@@ -325,19 +334,6 @@ def main():
                 
     print("Gràcies per utilitzar els nostres serveis ! Àdeu ! Fins una altra!")
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
- 
-
     
-
-
-            
-
-   
-
-    
-
-
-            
- 
