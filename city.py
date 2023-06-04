@@ -5,12 +5,12 @@ import os
 from PIL import Image
 from buses import *
 
-CityGraph : TypeAlias = nx.Graph
-OsmnxGraph : TypeAlias = nx.MultiDiGraph
+CityGraph: TypeAlias = nx.Graph
+OsmnxGraph: TypeAlias = nx.MultiDiGraph
 Path: TypeAlias = list[Coord]
 
-V_CAMINANT: float = 1.5 #m/s
-V_DEL_BUS: float = 7.0 #m/s
+V_CAMINANT: float = 1.5  # m/s
+V_DEL_BUS: float = 7.0  # m/s
 
 
 def get_osmx_graph() -> OsmnxGraph:
@@ -75,7 +75,7 @@ def build_city_graph(g1: OsmnxGraph, g2: BusesGraph) -> CityGraph:
         city_graf.add_node(node[0], pos=[node[1]['y'], node[1]['x']], tipus='cruilla')
 
     for edge in g1.edges.data():
-        city_graf.add_edge(edge[0], edge[1], dist=edge[2]['length'], tipus='carrer', temps=edge[2]['length']//V_CAMINANT) 
+        city_graf.add_edge(edge[0], edge[1], dist=edge[2]['length'], tipus='carrer', temps=edge[2]['length'] // V_CAMINANT)
 
     # Afegim els nodes del graf g2 (BusesGraph) al nou CityGraph com a tipus Parada
     city_graf.add_nodes_from(g2.nodes.data(), tipus='parada')
@@ -88,7 +88,7 @@ def build_city_graph(g1: OsmnxGraph, g2: BusesGraph) -> CityGraph:
     # Per cada aresta al graf g2, creem una nova aresta al CityGraph que tindra com a atribut distància la distància d'anar d'una Parada a una altra pel graf osmnx
     for edge in g2.edges.data():
         path = ox.distance.shortest_path(g1, cruilla_mes_propera(city_graf, edge[0]), cruilla_mes_propera(city_graf, edge[1]), weight='length')
-        if path != None:
+        if path is not None:
             distancia = dist_path(g1, path)
             city_graf.add_edge(edge[0], edge[1], tipus='bus', dist=distancia, temps=distancia//V_DEL_BUS, path=path)
     
@@ -98,20 +98,20 @@ def build_city_graph(g1: OsmnxGraph, g2: BusesGraph) -> CityGraph:
 def plot(g: CityGraph, filename: str) -> None: 
     """Desa g com una imatge amb el mapa de la cuitat de fons en l'arxiu filename"""
     
-    mapa = staticmap.StaticMap(600,600)
+    mapa = staticmap.StaticMap(600, 600)
 
-    #Dibuixem un punt per cada node del graf
+    # Dibuixem un punt per cada node del graf
     for node in dict(g.nodes).values():
         p = (node['pos'][1], node['pos'][0])
         mapa.add_marker(staticmap.CircleMarker(p, 'red', 1))
     
-    #Dibuixem una linia per cada aresta del graf
+    # Dibuixem una linia per cada aresta del graf
     for edge in g.edges.data():
         s = g.nodes[edge[0]]['pos'][1], g.nodes[edge[0]]['pos'][0]
         d = g.nodes[edge[1]]['pos'][1], g.nodes[edge[1]]['pos'][0]
         mapa.add_line(staticmap.Line([s, d], 'blue', 1))
 
-    #Guardem la imatge en un fitxer
+    # Guardem la imatge en un fitxer
     imatge = mapa.render()
     imatge.save(filename)
 
@@ -125,7 +125,7 @@ def find_path(ox_g: OsmnxGraph, g: CityGraph, src: Coord, dst: Coord) -> Path:
     return nx.dijkstra_path(g, source, target, weight='temps')
 
 
-def show(g: CityGraph) -> None: 
+def show(g: CityGraph) -> None:
     """Mostra g de forma interactiva en una finestra"""
 
     pos = nx.get_node_attributes(g, 'pos')
@@ -164,7 +164,7 @@ def plot_path(g: CityGraph, p: Path, filename: str) -> None:
                 d = g.nodes[p_bus[y+1]]['pos'][1], g.nodes[p_bus[y+1]]['pos'][0]
                 mapa.add_line(staticmap.Line([s, d], 'blue', 2))
             
-    #Guardem la imatge en un fitxer
+    # Guardem la imatge en un fitxer
     imatge = mapa.render()
     imatge.save(filename)
 
