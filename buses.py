@@ -8,8 +8,9 @@ import numpy as np
 import pandas as pd
 import math
 
-BusesGraph : TypeAlias = nx.Graph
-Coord : TypeAlias = tuple[float, float]
+BusesGraph: TypeAlias = nx.Graph
+Coord: TypeAlias = tuple[float, float]
+
 
 def distance(p1: Coord, p2: Coord) -> float:
     '''Donades dies coordenades calcula la distancia entre elles a vol d'ocell'''
@@ -28,9 +29,10 @@ def distance(p1: Coord, p2: Coord) -> float:
     a = math.sin(dlat / 2) ** 2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2) ** 2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
-    return radi * c * 1000 #meters
+    return radi * c * 1000  # meters
 
-def get_buses_graph() -> BusesGraph:
+
+def get_buses_graph() -> BusesGraph: 
     """Retorna un graf a partir de les dades dels busos de l'AMB."""
     dades_busos_json = urllib.request.urlopen('https://www.ambmobilitat.cat/OpenData/ObtenirDadesAMB.json')
     busos = json.load(dades_busos_json)
@@ -58,13 +60,16 @@ def get_buses_graph() -> BusesGraph:
 
     return graf
 
-def show(g: BusesGraph) -> None:
+
+def show(g: BusesGraph) -> None: 
     """Mostra el graf"""
     pos = nx.get_node_attributes(g, 'pos')
     nx.draw(g, node_size=0, pos=pos)
     plt.show()
 
-def plot(g: BusesGraph, nom_fitxer: str) -> None:
+
+
+def plot(g: BusesGraph, nom_fitxer: str) -> None: 
     """Desa el graf com una imatge amb el mapa de la ciutat de fons en l'arxiu especificat."""
     
     mapa = staticmap.StaticMap(800, 800)
@@ -74,8 +79,9 @@ def plot(g: BusesGraph, nom_fitxer: str) -> None:
         mapa.add_marker(staticmap.CircleMarker(p, 'red', 1))
 
     for edge in dict(g.edges).values():
-        # Si la distancia de l'aresta és de més de 10km, no la volem mostrar ja que tan sols representa les unions entre els dos extrems de linia
-        if edge['dist'] < 10000: 
+        # Si la distancia de l'aresta és de més de 10km, no la volem mostrar ja
+        # que tan sols representa les unions entre els dos extrems de linia
+        if edge['dist'] < 10000:
             s = edge['pos2'][1], edge['pos2'][0]
             d = edge['pos1'][1], edge['pos1'][0]
             mapa.add_line(staticmap.Line([s, d], 'blue', 1))
