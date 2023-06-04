@@ -115,7 +115,7 @@ S'ha de tenir en compte que el planificador de rutes d'autobús es basa en les d
 
 
 
-# City
+# 3. City
 Aquest mòdul implementa un sistema de navegació de la ciutat mitjançant xarxes de grafs. Combina dades des de la llibreria OSMnx i el graf de busos per representar el graf complet de la ciutat. Els usuaris poden trobar el camí més curt entre dues ubicacions de la ciutat i visualitzar el graf de la ciutat amb el camí. 
 
 ## Prerequisits
