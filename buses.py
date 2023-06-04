@@ -13,7 +13,7 @@ Coord: TypeAlias = tuple[float, float]
 
 
 def distance(p1: Coord, p2: Coord) -> float:
-    '''Donades dies coordenades calcula la distancia entre elles a vol d'ocell'''
+    '''Donades dues coordenades calcula la distancia entre elles a vol d'ocell'''
     radi = 6371.0
 
     # Convertim les coordenades de graus a radians
