@@ -15,7 +15,7 @@ Conjunt de classes i funcions per llegir informació de la cartellera de Barcelo
 ## Requisits
 
 - Python 3.8 o superior
-- Paquets necessaris: `dataclasses`, `bs4` (BeautifulSoup), `requests`, `yogi`
+- Paquets necessaris: `dataclasses`, `bs4` (BeautifulSoup), `requests`, `json`, `time`
 
 ## Estructura del codi
 
@@ -43,7 +43,7 @@ El codi es divideix en vàries seccions: classes de dades i llegir la informaci�
    - `cinemas`: Llista d'objectes de la classe `Cinema`, que representen els cines disponibles a la cartellera.
    - `projections`: Llista d'objectes de la classe `Projection`, que representen les projeccions de pel·lícules en els cinemes.
 
-   A més a més, la classe `Billboard' proporciona mètodes per buscar pel·lícules segons diferents criteris, com el nom, el gènere, el director o l'actor. 
+   A més a més, la classe `Billboard` proporciona mètodes per buscar pel·lícules segons diferents criteris, com el nom, el gènere, el director o l'actor. 
 
 ### Funcions
 
@@ -76,6 +76,7 @@ El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir 
 
 # Buses
 Aquest programa utilitza les dades de l'Àrea Metropolitana de Barcelona per crear un graf representant les parades del bus i les seves connexions. Permet als usuaris calcular la duració del trajecte entre diferents parades i visualitzar les connexions dels busos en un mapa.
+
 ## Prerequisits
 - Networkx
 - Matplotlib.pyplot
