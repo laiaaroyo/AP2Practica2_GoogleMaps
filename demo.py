@@ -1,6 +1,6 @@
 import time
 import requests
-from bilboard import *
+from billboard import *
 from buses import *
 from city import *
 import datetime
@@ -39,7 +39,7 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
         print("----- Cartellera -----")
         for film in self.billboard.films:
             print("Title:", film.title)
-            print("Genere:", ", ".join(film.genre))
+            print("Genere:", ", ".join(film.genere))
             print("Director:", ", ".join(film.director))
             print("Actors:", ", ".join(film.actors))
             print("----------------------")
@@ -207,26 +207,24 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
         plot_interactive(self.plot_graf_city)
 
 
-    def obtenir_coordenades(self, direccio:str) -> Coord | None:
+    def obtenir_coordenades(self, direccio:str) -> Coord:
         """Donada una direcció retorna les coordenades de l'adreça, retorna una tupla amb la latitud i la longitud."""
 
-        url = f"https://nominatim.openstreetmap.org/search?q={direccio}&format=json"
-        intents = 0
+        equivalencia:dict[str,Coord] = {"Gran Vía de les Corts Catalanes, 385, 08015 Barcelona":(41.37644012709498, 2.1494966562395437) , "Calle Aribau, 8, 08011 Barcelona": (41.38627471324918, 2.162503137010816), 
+                        "Rambla de Prat 16, 08012 Barcelona":(41.40185607088032, 2.1516961793420064) , "Paseig de Gracia, 13, 08007 Barcelona": (41.38988140261133, 2.1675482703635613) , 
+                        "Carrer de Girona 173-175,08025 Barcelona":(41.399749089154525, 2.164554737011875), "Calle Verdi, 32, 08012 Barcelona": (41.4042920109033, 2.1568431370122014), 
+                        "Sta Fé de Nou Mèxic s/n, 08017 Barcelona": (41.39448291172901, 2.1362157744928254),"Avenida Diagonal, 3, 08019 Barcelona":(41.40997594323552, 2.2166893860724706) ,
+                        "Passeig Potosí 2 - Centro Comercial La Maquinista, 08030 Barcelona": (41.43973919927414, 2.198296733222233),
+                        "Paseo Andreu Nin s/n - Pintor Alzamora, 08016 Barcelona": (41.43845041407611, 2.179690362608926) , "Avenida Diagonal, 208, 08018 Barcelona":(41.40486771581146, 2.190754121672208),
+                        "General Mitre, 38-44, 08017 Barcelona": (41.394984391831294, 2.1340233235165305) , "Carrer del Pi, 5, 08002 Barcelona":(41.383370318549254, 2.173896494680645), 
+                        "Calle Floridablanca, 135, 08011 Barcelona":(41.38191672257184, 2.162680423515529),
+                        "C/ Sant Antoni Maria Claret, 168, 08041 Barcelona":(41.409156105188565, 2.1718909523526544), "Calle Salvador Espriu, 61, 08005 Barcelona":(41.39095680130664, 2.197943708176163) ,
+                        "Avenida Diagonal, 508, 08006 Barcelona":(41.39552038735651, 2.153793994681538), "Carrer Béjar, 53, 8014 Barcelona":(41.37757162454815, 2.145023116732765),
+                        "Calle Balmes, 422-424, 08022 Barcelona":(41.40739485032398, 2.1385792793423986),
+                        "Passeig de Gracia, 13, 08007 Barcelona":(41.38969030251614, 2.1674442658461084), "Carrer de la concordia, 1, 08917 Badalona":(41.44420081834454, 2.2306335388604244), 
+                        "Pelai,8":(41.38592831063234, 2.1652820658458003)}
         
-        while intents < 3:
-            response = requests.get(url)
-            
-            if response.status_code == 200:
-                data = response.json()
-                
-                if data:
-                    latitud = data[0]['lat']
-                    longitud = data[0]['lon']
-                    return (latitud, longitud)
-            
-            print("No s'ha trobat la direcció. Tornant a intentar en 3 segons...")
-            intents +=1
-            time.sleep(3)
+        return equivalencia[direccio]
 
 
     def mostrar_camí_pel·lícula(self, projeccions: list[Projection]) :
@@ -240,7 +238,7 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
         
         # Si encara no hem creat el graf de la ciutat el creem
         if not self.graf_city:
-            self.crear_graf_ciutat
+            self.crear_graf_ciutat()
         
         temps_per_arribar = 0
         temps_per_projeccio = 0
@@ -250,12 +248,12 @@ class Demo: # Sistema de menús per cercar pel·lícules i indicar el camí per 
         while temps_per_arribar >= temps_per_projeccio and idx < len(projeccions):
             
             direccio = projeccions[idx].cinema.address
-            for x in direccio:
-                if x == 'Calle':
-                    direccio = direccio.replace('Calle', '')
+            
             
             # Convertim l'adreça a coordenades
             resultat = self.obtenir_coordenades(direccio)
+            print(resultat)
+            input()
 
             temps_per_projeccio = minuts_actuals - (projeccions[idx].time[0]*60 + projeccions[idx].time[1])
             
@@ -329,4 +327,17 @@ def main():
 
 if __name__=="__main__":
     main()
+ 
+
+    
+
+
+            
+
+   
+
+    
+
+
+            
  
