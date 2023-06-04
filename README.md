@@ -74,10 +74,10 @@ projections_by_actor = billboard.cerca_peli_per_actor("Tom Hanks")
 
 El codi realitza sol·licituds HTTP a la pàgina web Sensacine.com  per obtenir la informació de la cartellera. Per tant és possible que es produeixin errors de connexió durant l'execució. En cas d'error, el codi tornarà a intenta a demanar la sol·licitud després de 5 segons d'espera.
 
-# Buses
+# 2. Buses
 Aquest programa utilitza les dades de l'Àrea Metropolitana de Barcelona per crear un graf representant les parades del bus i les seves connexions. Permet als usuaris calcular la duració del trajecte entre diferents parades i visualitzar les connexions dels busos en un mapa.
 
-## Prerequisits
+## Requisits
 - Networkx
 - Matplotlib.pyplot
 - Staticmap
@@ -86,10 +86,12 @@ Aquest programa utilitza les dades de l'Àrea Metropolitana de Barcelona per cre
 - pandas
 - request
 
-## Funcionalitat
+## Estructura del codi
 L'estructura del codi es divideix en: llegir les dades per a partir de la pàgina web d'AMB i crear el graf dels busos a partir d'aquelles que més ens interessen. I també en crear funcions que ens mostrin el resultat.
+
 ### Classe BusesGraph
 Àlies per un graf Networkx que representa la xarxa de busos. I on els nodes representen les Parades i les arestes els trajectes entre parades que fan els busos.
+
 ### Classe Coord
 Àlies per una tupla de dos valors que representen les coordenades (latitud i longitud).
 
@@ -121,37 +123,38 @@ Paquets necessaris: `networkx`, `osmnx`, `pickle`, `os`, `buses`.
 
 ## Funcionalitat
 
-##### get_osmx_graph()
+`get_osmx_graph()`
 Retorna un graf de la ciutat de Barcelona amb distàncies utilitzant la llibreria OSMnx. Especifica la ubicació (Barcelona,Espanya) i el tipus de xarxa (totes).
 
-##### save_osmnx_graph(filename:str) -> OsmnxGraph
+`save_osmnx_graph(filename:str) -> OsmnxGraph`
 Retorna el graf guardat al fitxer filename. LLegeix les dades del graf amb el mòdul pickle i retorna el graf carregat.
 
-##### cruilla_mes_propera(g: OsmnxGraph, edge: int) -> int | None
-Donada una aresta (representada pel seu identificador), retorna el node veí més proper de tipus 'cruïlla'. Itera sobre els nodes adjacents de l'aresta i comprova el seu tipus per trobar el node cruilla més proper. Si no es troba cap node retorna None.
+`cruilla_mes_propera(g: OsmnxGraph, node: int) -> int | None`
+Donat un node (representada pel seu identificador), retorna el node veí més proper de tipus 'cruïlla'. Itera sobre els nodes adjacents de l'aresta i comprova el seu tipus per trobar el node cruilla més proper. Si no es troba cap node retorna None.
 
-##### build_city_graph(g1: OsmnxGraph, g2: BusesGraph) -> CityGraph
+`build_city_graph(g1: OsmnxGraph, g2: BusesGraph) -> CityGraph`
 Retorna un graf de la ciutat combinat el graf OSMnx i el graf de busos. Crea un `CityGraph`buit i afegeix nodes i arestes a partir de les dades de g1 i g2. Els nodes de g1 s'afegeixen com a nodes "cruïlla" i les arestes de g1 s'afegeixen com a arestes de "carrer". A més, per cada node 'parada' es crea una aresta per connectar-lo amb el node 'cruilla' més proper. Finalment calcula les distàncies del camí més curt entre els nodes cruilla i els nodes parada mitjançant la funció `ox.shortest_path()`.
 
-##### plot(g: CityGraph, filename: str) -> None
+`plot(g: CityGraph, filename: str) -> None`
 Desa g com una imatge amb el mapa de la cuitat de fons en l'arxiu filename utilitzant la biblioteca `staticmap`
 
-##### find_path (ox_g: OsmnxGraph, g: CityGraph, src: Coord, dst: Coord) -> tuple[Path, int]
-
+`find_path (ox_g: OsmnxGraph, g: CityGraph, src: Coord, dst: Coord) -> tuple[Path, int]`
 Troba el camí més curt entre dues coordenades 'src' i 'dst' del graf de la ciutat g. La funció retorna una tupla que conté el camí com una llista de coordenades i el temps total necessari per recórrer el camí.
 Troba la parada d'inici més a prop i la parada de destinació més a prop i calcula el camí més curt del graf entre aquests dos punts.
 
-##### show(g: CityGraph) -> None
+`show(g: CityGraph) -> None`
 Mostra g de forma interactiva en una finestra.
 
-##### plot_path(g: CityGraph, p: Path, filename: str) -> None
+`plot_path(g: CityGraph, p: Path, filename: str) -> None`
 Donat el graf de la ciutat 'g', i un camí 'p' (llista de coordenades) i el nom d'un fitxer genera una imatge del graf de la ciutat amb el camí corresponent i el guarda en el fitxer especificat.
 
-##### plot_interactive(filename: str) -> None
+`plot_interactive(filename: str) -> None`
 Mostra la imatge especificada per el nom del fitxer en una finestra interactiva.
 
+Després tenim també dues funcions que ens ajuden a calcular la distància d'un camí `time_path()`, o el temps que tardem en recorre'l `time_path()`
+
 ## Personalització
-- Ciutat: el projecte està configurat per utilitzar Barcelona com a ciutat. Podeu especificar la ciutat desitjada.
+- Ciutat: el projecte està configurat per utilitzar Barcelona com a ciutat. Podeu especificar la ciutat desitjada en el cas que disposeu d'un `BusesGraph` amb les mateixes característiques de la ciutat escollida.
 - Velocitats: la velocitat caminant (`V_CAMINANT`) i la velocitat de l'autobús (`V_DEL_BUS`) es poden ajustar segons el que creieu.
 
 ## Ús
@@ -164,6 +167,11 @@ Mostra la imatge especificada per el nom del fitxer en una finestra interactiva.
     
     plot(g_ciutat, 'finalcity.jpg')
     
+    src: Coord = input('Desde on vols sortir?')
+    dst: Coord = input('On vols arribar?')
+    path = find_path(graf1, g_ciutat, src, dst)
+    
+    plot_path(g_ciutat, path, 'cami.jpg')
 ```
 # Demo
 
