@@ -173,7 +173,7 @@ Després tenim també dues funcions que ens ajuden a calcular la distància d'un
     
     plot_path(g_ciutat, path, 'cami.jpg')
 ```
-# Demo
+# 4. Demo
 
 Aquest codi representa representa una aplicació de cartellera de pel·lícules. El codi permet als usuaris crear i gestionar una cartellera de pel·lícules, cercar pel·lícules i trobar rutes per arribar a les sales de cinema. 
 
