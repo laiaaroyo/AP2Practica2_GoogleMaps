@@ -212,12 +212,7 @@ Aquest codi representa representa una aplicació de cartellera de pel·lícules.
 Assegurar-te de tenir totes les llibreries i paquets instal·lats i seguir les opcions de menú que es mostren per interactuar amb l'aplicació.
 
 
-## Autores
+## Autors
 
 * Clàudia Ibañez
 *  Laia Royo
-
-
-
-
-
